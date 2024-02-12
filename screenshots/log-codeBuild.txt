@@ -1,0 +1,209 @@
+[Container] 2024/02/12 19:57:53.717207 Waiting for agent ping
+[Container] 2024/02/12 19:57:53.918300 Waiting for DOWNLOAD_SOURCE
+[Container] 2024/02/12 19:57:56.827491 Phase is DOWNLOAD_SOURCE
+[Container] 2024/02/12 19:57:56.828989 CODEBUILD_SRC_DIR=/codebuild/output/src1811148493/src/github.com/mirojurisic/Operating-coworking-space-microservice-udacity
+[Container] 2024/02/12 19:57:56.829407 YAML location is /codebuild/output/src1811148493/src/github.com/mirojurisic/Operating-coworking-space-microservice-udacity/analytics/buildspec.yml
+[Container] 2024/02/12 19:57:56.831047 Setting HTTP client timeout to higher timeout for Github and GitHub Enterprise sources
+[Container] 2024/02/12 19:57:56.831136 Processing environment variables
+[Container] 2024/02/12 19:57:57.052288 No runtime version selected in buildspec.
+[Container] 2024/02/12 19:57:57.130305 Moving to directory /codebuild/output/src1811148493/src/github.com/mirojurisic/Operating-coworking-space-microservice-udacity
+[Container] 2024/02/12 19:57:57.131756 Unable to initialize cache download: no paths specified to be cached
+[Container] 2024/02/12 19:57:57.194196 Configuring ssm agent with target id: codebuild:1b931ca8-c335-4682-bbfe-89364896db86
+[Container] 2024/02/12 19:57:57.223620 Successfully updated ssm agent configuration
+[Container] 2024/02/12 19:57:57.223898 Registering with agent
+[Container] 2024/02/12 19:57:57.223989 Phases found in YAML: 3
+[Container] 2024/02/12 19:57:57.223998  POST_BUILD: 3 commands
+[Container] 2024/02/12 19:57:57.224089  PRE_BUILD: 2 commands
+[Container] 2024/02/12 19:57:57.224097  BUILD: 4 commands
+[Container] 2024/02/12 19:57:57.224317 Phase complete: DOWNLOAD_SOURCE State: SUCCEEDED
+[Container] 2024/02/12 19:57:57.224328 Phase context status code:  Message: 
+[Container] 2024/02/12 19:57:57.305879 Entering phase INSTALL
+[Container] 2024/02/12 19:57:57.338041 Phase complete: INSTALL State: SUCCEEDED
+[Container] 2024/02/12 19:57:57.338054 Phase context status code:  Message: 
+[Container] 2024/02/12 19:57:57.369967 Entering phase PRE_BUILD
+[Container] 2024/02/12 19:57:57.370570 Running command echo Logging in to Amazon ECR...
+Logging in to Amazon ECR...
+
+[Container] 2024/02/12 19:57:57.378551 Running command aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+[Container] 2024/02/12 19:58:10.452996 Phase complete: PRE_BUILD State: SUCCEEDED
+[Container] 2024/02/12 19:58:10.453016 Phase context status code:  Message: 
+[Container] 2024/02/12 19:58:10.482949 Entering phase BUILD
+[Container] 2024/02/12 19:58:10.483395 Running command echo Build started on `date`
+Build started on Mon Feb 12 19:58:10 UTC 2024
+
+[Container] 2024/02/12 19:58:10.491318 Running command echo Building the Docker image...
+Building the Docker image...
+
+[Container] 2024/02/12 19:58:10.496453 Running command docker build --build-arg=DB_HOST_URL=http://172.20.182.124:5432  --build-arg=DB_USERNAME=$DB_USERNAME --build-arg=DB_PASSWORD=$DB_PASSWORD  -t $ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER ./analytics/
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 659B done
+#1 DONE 0.1s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.2-alpine
+#3 DONE 1.2s
+
+#4 [internal] load build context
+#4 transferring context: 7.65kB done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/python:3.12.2-alpine@sha256:1a0501213b470de000d8432b3caab9d8de5489e9443c2cc7ccaa6b0aa5c3148e
+#5 resolve docker.io/library/python:3.12.2-alpine@sha256:1a0501213b470de000d8432b3caab9d8de5489e9443c2cc7ccaa6b0aa5c3148e 0.0s done
+#5 sha256:849ed6079c9f797ca9c1b7d6aea1c00aea3ac35110cbd0d6003f15950017ea8d 1.37kB / 1.37kB done
+#5 sha256:c54b53ca8371c4e91a0d13c637c2c89d114b91ffa18289e93387e3e80da979f8 6.04kB / 6.04kB done
+#5 sha256:4abcf20661432fb2d719aaf90656f55c287f8ca915dc1c92ec14ff61e67fbaf8 3.41MB / 3.41MB 0.2s
+#5 sha256:dca80dc46cecdd1a97787a1dd6f74263b9d2f7b0dd3e2e15c109f5e34848c932 0B / 622.15kB 0.2s
+#5 sha256:fe9e15b6315c34de5c802bdbd343e3ec69bdc4ab870783fc1b9552daaef25e77 0B / 11.77MB 0.2s
+#5 sha256:1a0501213b470de000d8432b3caab9d8de5489e9443c2cc7ccaa6b0aa5c3148e 1.65kB / 1.65kB done
+#5 sha256:4abcf20661432fb2d719aaf90656f55c287f8ca915dc1c92ec14ff61e67fbaf8 3.41MB / 3.41MB 0.2s done
+#5 sha256:dca80dc46cecdd1a97787a1dd6f74263b9d2f7b0dd3e2e15c109f5e34848c932 622.15kB / 622.15kB 0.3s done
+#5 extracting sha256:4abcf20661432fb2d719aaf90656f55c287f8ca915dc1c92ec14ff61e67fbaf8 0.1s
+#5 sha256:a8fd6f3f484fdfccf33965ca0f8807e5078a619803cf638d82bc4a405e91de04 0B / 242B 0.3s
+#5 sha256:4fc96b5c1ba465ba27fb55d4766ade8624de4082ac1530b3293ac735ab3ead50 0B / 2.70MB 0.3s
+#5 sha256:fe9e15b6315c34de5c802bdbd343e3ec69bdc4ab870783fc1b9552daaef25e77 8.39MB / 11.77MB 0.4s
+#5 extracting sha256:4abcf20661432fb2d719aaf90656f55c287f8ca915dc1c92ec14ff61e67fbaf8 0.1s done
+#5 sha256:fe9e15b6315c34de5c802bdbd343e3ec69bdc4ab870783fc1b9552daaef25e77 11.77MB / 11.77MB 0.4s done
+#5 sha256:a8fd6f3f484fdfccf33965ca0f8807e5078a619803cf638d82bc4a405e91de04 242B / 242B 0.4s done
+#5 sha256:4fc96b5c1ba465ba27fb55d4766ade8624de4082ac1530b3293ac735ab3ead50 2.70MB / 2.70MB 0.5s done
+#5 extracting sha256:dca80dc46cecdd1a97787a1dd6f74263b9d2f7b0dd3e2e15c109f5e34848c932
+#5 extracting sha256:dca80dc46cecdd1a97787a1dd6f74263b9d2f7b0dd3e2e15c109f5e34848c932 0.1s done
+#5 extracting sha256:fe9e15b6315c34de5c802bdbd343e3ec69bdc4ab870783fc1b9552daaef25e77
+#5 extracting sha256:fe9e15b6315c34de5c802bdbd343e3ec69bdc4ab870783fc1b9552daaef25e77 0.4s done
+#5 extracting sha256:a8fd6f3f484fdfccf33965ca0f8807e5078a619803cf638d82bc4a405e91de04 done
+#5 extracting sha256:4fc96b5c1ba465ba27fb55d4766ade8624de4082ac1530b3293ac735ab3ead50 0.1s
+#5 extracting sha256:4fc96b5c1ba465ba27fb55d4766ade8624de4082ac1530b3293ac735ab3ead50 0.2s done
+#5 ...
+
+#6 [2/5] WORKDIR /analytics
+#6 DONE 1.5s
+
+#7 [3/5] COPY requirements.txt requirements.txt
+#7 DONE 0.1s
+
+#8 [4/5] RUN pip3 install -r requirements.txt
+#8 2.100 Collecting apscheduler (from -r requirements.txt (line 1))
+#8 2.144   Downloading APScheduler-3.10.4-py3-none-any.whl.metadata (5.7 kB)
+#8 2.177 Collecting flask==2.2.2 (from -r requirements.txt (line 2))
+#8 2.182   Downloading Flask-2.2.2-py3-none-any.whl (101 kB)
+#8 2.194      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.5/101.5 kB 9.3 MB/s eta 0:00:00
+#8 2.271 Collecting psycopg2-binary (from -r requirements.txt (line 3))
+#8 2.275   Downloading psycopg2_binary-2.9.9-cp312-cp312-musllinux_1_1_x86_64.whl.metadata (4.4 kB)
+#8 2.298 Collecting flask_sqlalchemy (from -r requirements.txt (line 4))
+#8 2.303   Downloading flask_sqlalchemy-3.1.1-py3-none-any.whl.metadata (3.4 kB)
+#8 2.337 Collecting werkzeug==2.3.7 (from -r requirements.txt (line 5))
+#8 2.341   Downloading werkzeug-2.3.7-py3-none-any.whl.metadata (4.1 kB)
+#8 2.376 Collecting Jinja2>=3.0 (from flask==2.2.2->-r requirements.txt (line 2))
+#8 2.379   Downloading Jinja2-3.1.3-py3-none-any.whl.metadata (3.3 kB)
+#8 2.425 Collecting itsdangerous>=2.0 (from flask==2.2.2->-r requirements.txt (line 2))
+#8 2.428   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+#8 2.454 Collecting click>=8.0 (from flask==2.2.2->-r requirements.txt (line 2))
+#8 2.457   Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+#8 2.555 Collecting MarkupSafe>=2.1.1 (from werkzeug==2.3.7->-r requirements.txt (line 5))
+#8 2.561   Downloading MarkupSafe-2.1.5-cp312-cp312-musllinux_1_1_x86_64.whl.metadata (3.0 kB)
+#8 2.590 Collecting six>=1.4.0 (from apscheduler->-r requirements.txt (line 1))
+#8 2.594   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+#8 2.713 Collecting pytz (from apscheduler->-r requirements.txt (line 1))
+#8 2.717   Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+#8 2.778 Collecting tzlocal!=3.*,>=2.0 (from apscheduler->-r requirements.txt (line 1))
+#8 2.781   Downloading tzlocal-5.2-py3-none-any.whl.metadata (7.8 kB)
+#8 2.793 INFO: pip is looking at multiple versions of flask-sqlalchemy to determine which version is compatible with other requirements. This could take a while.
+#8 2.794 Collecting flask_sqlalchemy (from -r requirements.txt (line 4))
+#8 2.801   Downloading flask_sqlalchemy-3.1.0-py3-none-any.whl.metadata (3.4 kB)
+#8 2.835   Downloading flask_sqlalchemy-3.0.5-py3-none-any.whl.metadata (3.3 kB)
+#8 2.845   Downloading flask_sqlalchemy-3.0.4-py3-none-any.whl.metadata (3.3 kB)
+#8 2.855   Downloading Flask_SQLAlchemy-3.0.3-py3-none-any.whl (24 kB)
+#8 3.162 Collecting SQLAlchemy>=1.4.18 (from flask_sqlalchemy->-r requirements.txt (line 4))
+#8 3.168   Downloading SQLAlchemy-2.0.26-cp312-cp312-musllinux_1_1_x86_64.whl.metadata (9.6 kB)
+#8 3.230 Collecting typing-extensions>=4.6.0 (from SQLAlchemy>=1.4.18->flask_sqlalchemy->-r requirements.txt (line 4))
+#8 3.232   Downloading typing_extensions-4.9.0-py3-none-any.whl.metadata (3.0 kB)
+#8 3.363 Collecting greenlet!=0.4.17 (from SQLAlchemy>=1.4.18->flask_sqlalchemy->-r requirements.txt (line 4))
+#8 3.367   Downloading greenlet-3.0.3-cp312-cp312-musllinux_1_1_x86_64.whl.metadata (3.8 kB)
+#8 3.393 Downloading werkzeug-2.3.7-py3-none-any.whl (242 kB)
+#8 3.425    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.2/242.2 kB 7.5 MB/s eta 0:00:00
+#8 3.429 Downloading APScheduler-3.10.4-py3-none-any.whl (59 kB)
+#8 3.435    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.3/59.3 kB 12.5 MB/s eta 0:00:00
+#8 3.444 Downloading psycopg2_binary-2.9.9-cp312-cp312-musllinux_1_1_x86_64.whl (2.5 MB)
+#8 3.631    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.5/2.5 MB 13.2 MB/s eta 0:00:00
+#8 3.645 Downloading click-8.1.7-py3-none-any.whl (97 kB)
+#8 3.652    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 16.6 MB/s eta 0:00:00
+#8 3.677 Downloading Jinja2-3.1.3-py3-none-any.whl (133 kB)
+#8 3.684    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.2/133.2 kB 24.0 MB/s eta 0:00:00
+#8 3.693 Downloading MarkupSafe-2.1.5-cp312-cp312-musllinux_1_1_x86_64.whl (33 kB)
+#8 3.705 Downloading SQLAlchemy-2.0.26-cp312-cp312-musllinux_1_1_x86_64.whl (3.2 MB)
+#8 3.741    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 94.5 MB/s eta 0:00:00
+#8 3.744 Downloading tzlocal-5.2-py3-none-any.whl (17 kB)
+#8 3.763 Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+#8 3.774    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 54.9 MB/s eta 0:00:00
+#8 3.782 Downloading greenlet-3.0.3-cp312-cp312-musllinux_1_1_x86_64.whl (1.2 MB)
+#8 3.812    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 41.6 MB/s eta 0:00:00
+#8 3.814 Downloading typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+#8 3.976 Installing collected packages: pytz, tzlocal, typing-extensions, six, psycopg2-binary, MarkupSafe, itsdangerous, greenlet, click, werkzeug, SQLAlchemy, Jinja2, apscheduler, flask, flask_sqlalchemy
+#8 6.114 Successfully installed Jinja2-3.1.3 MarkupSafe-2.1.5 SQLAlchemy-2.0.26 apscheduler-3.10.4 click-8.1.7 flask-2.2.2 flask_sqlalchemy-3.0.3 greenlet-3.0.3 itsdangerous-2.1.2 psycopg2-binary-2.9.9 pytz-2024.1 six-1.16.0 typing-extensions-4.9.0 tzlocal-5.2 werkzeug-2.3.7
+#8 6.114 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#8 DONE 6.7s
+
+#5 [1/5] FROM docker.io/library/python:3.12.2-alpine@sha256:1a0501213b470de000d8432b3caab9d8de5489e9443c2cc7ccaa6b0aa5c3148e
+#5 ...
+
+#9 [5/5] COPY . .
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.4s done
+#10 writing image sha256:7e4f2aefc1ab69d1bcc5bb28e6387e1c70b29a684ae74300aaa9a98cb9a49ade done
+#10 naming to docker.io/library/demo-k8s-ecr-repository:17 done
+#10 DONE 0.4s
+
+#5 [1/5] FROM docker.io/library/python:3.12.2-alpine@sha256:1a0501213b470de000d8432b3caab9d8de5489e9443c2cc7ccaa6b0aa5c3148e
+
+[Container] 2024/02/12 19:58:22.728562 Running command docker tag $ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER
+
+[Container] 2024/02/12 19:58:22.774942 Phase complete: BUILD State: SUCCEEDED
+[Container] 2024/02/12 19:58:22.774957 Phase context status code:  Message: 
+[Container] 2024/02/12 19:58:22.809950 Entering phase POST_BUILD
+[Container] 2024/02/12 19:58:22.810478 Running command echo Build completed on `date`
+Build completed on Mon Feb 12 19:58:22 UTC 2024
+
+[Container] 2024/02/12 19:58:22.815880 Running command echo Pushing the Docker image...
+Pushing the Docker image...
+
+[Container] 2024/02/12 19:58:22.820457 Running command docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER
+The push refers to repository [796618404628.dkr.ecr.eu-central-1.amazonaws.com/demo-k8s-ecr-repository]
+cc6db2b1f9ca: Preparing
+4d0fd3801dd9: Preparing
+4be693e0105c: Preparing
+97b776f837cd: Preparing
+5305019f4685: Preparing
+d2968c01735e: Preparing
+0c9bfb14c909: Preparing
+678cac8b069e: Preparing
+d4fc045c9e3a: Preparing
+d2968c01735e: Waiting
+0c9bfb14c909: Waiting
+678cac8b069e: Waiting
+d4fc045c9e3a: Waiting
+5305019f4685: Layer already exists
+d2968c01735e: Layer already exists
+0c9bfb14c909: Layer already exists
+678cac8b069e: Layer already exists
+d4fc045c9e3a: Layer already exists
+4be693e0105c: Pushed
+97b776f837cd: Pushed
+cc6db2b1f9ca: Pushed
+4d0fd3801dd9: Pushed
+17: digest: sha256:aac9309a07d343f70489e5e6476f67e0d99d92115e4151ad5712f5d372092d5d size: 2202
+
+[Container] 2024/02/12 19:58:26.160499 Phase complete: POST_BUILD State: SUCCEEDED
+[Container] 2024/02/12 19:58:26.160521 Phase context status code:  Message: 

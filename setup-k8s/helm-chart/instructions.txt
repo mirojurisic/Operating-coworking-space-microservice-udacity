@@ -1,0 +1,43 @@
+# Add Helm repository by Bitnami
+helm repo add bitnami <https://charts.bitnami.com/bitnami>
+
+# Update Helm index charts
+helm repo update
+
+
+helm repo lists
+
+kubectl apply -f pv-postgresql.yaml
+
+kubectl apply -f pvc-postgresql.yaml
+
+# Checking PersistentVolume
+kubectl get pv
+
+# Checking PersistentVolumeClaim
+kubectl get pvc
+
+helm install postgresql-dev -f values.yaml bitnami/postgresql
+
+
+# Checking pods
+kubectl get pods
+
+# Checking logs of pods
+kubectl logs postgresql-dev-0
+
+export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-dev -o jsonpath="{.data.password}" | base64 --decode)
+export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-dev -o jsonpath="{.data.user}" | base64 --decode)
+
+kubectl run postgresql-dev-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:14.1.0-debian-10-r80 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- psql --host postgresql-dev -U app1 -d app_db -p 5432
+
+# Checking PostgreSQL connection
+\conninfo
+
+# Logout from PostgreSQL shell
+exit
+
+
+kubectl port-forward --namespace default svc/postgresql-dev 5432:5432
+
+DB_USERNAME=app1 DB_PASSWORD=AppPassword python3 app.py

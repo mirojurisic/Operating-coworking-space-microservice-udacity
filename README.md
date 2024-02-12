@@ -129,3 +129,21 @@ Please provide up to 3 sentences for each suggestion. Additional content in your
 ### Best Practices
 * Dockerfile uses an appropriate base image for the application being deployed. Complex commands in the Dockerfile include a comment describing what it is doing.
 * The Docker images use semantic versioning with three numbers separated by dots, e.g. `1.2.1` and  versioning is visible in the  screenshot. See [Semantic Versioning](https://semver.org/) for more details.
+
+### MY EXPLAINATIONS
+
+I would like to share my knowledge about this project with others.
+There are many separate tasks performed here and this could be also done by different teams. 
+
+- One task was to make sure that python "backend" is dockerized and that is running correctly. For this is used local docker testing, and once working image is ready, share this image over repository (ECR in our case).
+- Other task would be to set up the pipeline (CodeBuildPipeline in our case) that will make sure that the updated application code is "packaged" into container and new version is tagged and ready to be used by other teams. My implementation does not include automatic trigger or git event/repo event but the manual run of pipeline is used. This is for sure task to improve the workflow.
+- Creation of the cluster(k8s) can be performed either via console or via IaC. I used separate private repo do this task. Issues that I had here: I have not used the same user/role to create cluster and to run kubectl commands. This is not recommended, because you create yourself more task by managing roles and permissions.
+- Creation of the DB service via helm, was supposed to be an easy task. I found out the hard way that Persistent Volume is needed and that there are certain permissions needed to postgres user. Please check into /setup-k8s/helm-chart. There I left my working steps. 
+
+
+Finally I would like to say that this project took much longer than I expected, but I hope that issues that I solved will be useful in the future.
+
+
+
+Link to useful instructions.
+https://phoenixnap.com/kb/postgresql-kubernetes
