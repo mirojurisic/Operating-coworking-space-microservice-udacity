@@ -11,7 +11,7 @@ db_username = os.environ["DB_USERNAME"]
 db_password = os.environ["DB_PASSWORD"]
 db_host = os.environ.get("DB_HOST", "127.0.0.1")
 db_port = os.environ.get("DB_PORT", "5432")
-db_name = os.environ.get("DB_NAME", "postgres")
+db_name = os.environ.get("DB_NAME", "app_db")
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}"
@@ -41,7 +41,7 @@ class Token(db.Model):
 
 @app.route("/health_check")
 def health_check():
-    return "ok"
+    return app.config["SQLALCHEMY_DATABASE_URI"]
 
 
 @app.route("/readiness_check")
@@ -122,4 +122,3 @@ def validate_token():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5151)
-It's recommended to create one unique repository for the lifecycle of one Docker image. You should not create one Docker repository to manage Docker images from different applications.

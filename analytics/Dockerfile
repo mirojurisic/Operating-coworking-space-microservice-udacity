@@ -1,7 +1,7 @@
 # https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/
 # syntax=docker/dockerfile:1
 
-FROM python:3.8-slim-buster
+FROM python:3.10-slim
 
 ARG DB_HOST_URL
 ENV DB_HOST=${DB_HOST_API_URL}

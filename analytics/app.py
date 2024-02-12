@@ -38,6 +38,7 @@ def get_daily_visits():
         WHERE  used_at IS NOT NULL
         GROUP  BY Date(created_at)
         """))
+        app.logger.info(result)
 
         response = {}
         for row in result:
