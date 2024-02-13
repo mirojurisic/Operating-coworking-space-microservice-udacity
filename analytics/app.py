@@ -38,7 +38,7 @@ def get_daily_visits():
         WHERE  used_at IS NOT NULL
         GROUP  BY Date(created_at)
         """))
-        app.logger.info(result)
+        
 
         response = {}
         for row in result:
@@ -51,7 +51,7 @@ def get_daily_visits():
 
 @app.route("/api/reports/daily_usage", methods=["GET"])
 def daily_visits():
-    return jsonify(get_daily_visits)
+    return jsonify(get_daily_visits())
 
 
 @app.route("/api/reports/user_visits", methods=["GET"])
