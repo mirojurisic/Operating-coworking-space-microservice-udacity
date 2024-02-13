@@ -10,7 +10,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build --build-arg=DB_HOST_URL=http://172.20.182.124:5432  --build-arg=DB_USERNAME=$DB_USERNAME --build-arg=DB_PASSWORD=$DB_PASSWORD  -t $ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER ./analytics/
+      - docker build --build-arg=DB_NAME=$DB_NAME --build-arg=DB_HOST_URL=$DB_HOST_URL  --build-arg=DB_USERNAME=$DB_USERNAME --build-arg=DB_PASSWORD=$DB_PASSWORD  -t $ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER ./analytics/
       - docker tag $ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$CODEBUILD_BUILD_NUMBER      
   post_build:
     commands:
