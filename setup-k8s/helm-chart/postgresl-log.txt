@@ -1,6 +1,6 @@
 helm install postgresql-dev -f values.yaml bitnami/postgresql
 NAME: postgresql-dev
-LAST DEPLOYED: Mon Feb 12 19:14:10 2024
+LAST DEPLOYED: Tue Feb 13 09:56:43 2024
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1

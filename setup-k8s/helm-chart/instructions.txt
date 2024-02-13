@@ -1,3 +1,5 @@
+
+
 # Add Helm repository by Bitnami
 helm repo add bitnami <https://charts.bitnami.com/bitnami>
 
@@ -20,6 +22,19 @@ kubectl get pvc
 helm install postgresql-dev -f values.yaml bitnami/postgresql
 
 
+export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-dev -o jsonpath="{.data.password}" | base64 -d)
+
+kubectl get pods
+
+kubectl exec -it <POD_NAME> bash
+
+
+kubectl exec -it postgresql-dev-0 bash
+
+PGPASSWORD=AppPassword psql --host 127.0.0.1 -U app1 -d app_db -p 5432
+
+PGPASSWORD="$POSTGRES_PASSWORD" psql --host 127.0.0.1 -U <user name> -d <db name> -p 5432
+
 # Checking pods
 kubectl get pods
 
@@ -27,7 +42,6 @@ kubectl get pods
 kubectl logs postgresql-dev-0
 
 export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-dev -o jsonpath="{.data.password}" | base64 --decode)
-export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-dev -o jsonpath="{.data.user}" | base64 --decode)
 
 kubectl run postgresql-dev-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:14.1.0-debian-10-r80 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- psql --host postgresql-dev -U app1 -d app_db -p 5432
 

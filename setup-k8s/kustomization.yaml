@@ -8,4 +8,4 @@ namespace: default
 images:
 - name: backend
   newName: 796618404628.dkr.ecr.eu-central-1.amazonaws.com/demo-k8s-ecr-repository
-  newTag: "17"
+  newTag: "26"
